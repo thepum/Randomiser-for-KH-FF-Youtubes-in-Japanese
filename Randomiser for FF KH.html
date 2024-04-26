@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenated URL Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+            word-break: break-all;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Concatenated URL Generator</h1>
+        <p>Click the button to generate a random concatenated URL:</p>
+        <button onclick="generateURL()">Generate URL</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // List of predetermined strings for part 2
+        const predeterminedList = [
+			"5WPsnXVE47w", // KH1 //
+			"WvsdNoAYCBc", // CoM //
+			"vpjk4ERXx3c", // 358 //
+			"LenXW1iKrVM", // KH2 //
+			"Fbjp5XTIMA8", // DDD //
+			"SNm2MYE3Zpk", // KH3 //
+			"TdLm2Aixb1s", // KH3 //
+			"NHPlF47Wniw", // KH3 Remind //
+			"kTm0DNxmwpw", // KHx Back Cover //
+            "fECMxBp6HJQ", // FF Crisis Core//
+            "JBEzxmMjpCM", // FF7 Remake//
+            "ZHaRwPnm6zQ", // FF7 Rebirth//
+            "1rI3k3c-N84", // FF10 //
+            "1NarvBqUUic", // FF13 //
+            "UqUcGOa0xJc", // FF13-2 //
+            "lZuV0ZS0a4Q", // FF13LR //
+            "SesUZ_6yg-U", // FF15 I //
+            "ToqdWC1MQbU", // FF15 II //
+            "GGDcS7fBDMk" // FF16 //
+        ];
+
+        // Function to generate a random number between min and max
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Function to generate a random concatenated URL
+        function generateURL() {
+            // Randomly select a string from predetermined list
+            const randomPart2 = predeterminedList[Math.floor(Math.random() * predeterminedList.length)];
+            // Generate a random number between 1 and 30000 for part 4
+            const randomPart4 = getRandomNumber(1, 30000);
+            // Concatenate the parts
+            const concatenatedURL = `https://www.youtube.com/watch?v=${randomPart2}&t=${randomPart4}s`;
+            // Display the result
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `<a href="${concatenatedURL}" target="_blank">${concatenatedURL}</a>`;
+        }
+    </script>
+</body>
+</html>
